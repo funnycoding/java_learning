@@ -1,5 +1,6 @@
 package chapger1;
 
+import chapter1.SafeSequence;
 import chapter1.UnsafeCountingFactorizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,17 +17,28 @@ import org.mockito.Mockito;
 
 public class UnsafeCountingFactorizerTest extends Mockito {
     @Test
-    public void testService() throws InterruptedException {
+    public void unsafeCounterTest() throws InterruptedException {
         UnsafeCountingFactorizer uncf = new UnsafeCountingFactorizer();
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
+
         for (int i = 0; i < 10; i++) {
             Thread thread = new Thread(() -> uncf.service(request, response));
             thread.join();
             thread.start();
-
         }
-        System.out.println(uncf.getCount());
         Assert.assertEquals(10, uncf.getCount());
+    }
+
+    @Test
+    public void testSafeSequence() throws InterruptedException {
+        SafeSequence ss = new SafeSequence();
+
+        for (int i = 0; i < 10; i++) {
+            Thread thread = new Thread(ss::addValue);
+            thread.start();
+            thread.join();
+        }
+        Assert.assertEquals(10, ss.getValue());
     }
 }
