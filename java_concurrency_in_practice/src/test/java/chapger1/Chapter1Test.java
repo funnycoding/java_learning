@@ -1,34 +1,36 @@
 package chapger1;
 
+import chapter1.NonSafeSequence;
 import chapter1.SafeSequence;
-import chapter1.UnsafeCountingFactorizer;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 /**
  * @author XuYanXin
  * @program java_learning
  * @description
- * @date 2020/9/25 5:57 下午
+ * @date 2020/9/26 11:29 下午
  */
 
-public class UnsafeCountingFactorizerTest extends Mockito {
+public class Chapter1Test {
     @Test
-    public void unsafeCounterTest() throws InterruptedException {
-        UnsafeCountingFactorizer uncf = new UnsafeCountingFactorizer();
-        HttpServletRequest request = mock(HttpServletRequest.class);
-        HttpServletResponse response = mock(HttpServletResponse.class);
+    public void testUnsafeSequence() throws InterruptedException {
+        NonSafeSequence nonSafeSequence = new NonSafeSequence();
 
         for (int i = 0; i < 10; i++) {
-            Thread thread = new Thread(() -> uncf.service(request, response));
-            thread.join();
+            Thread thread = new Thread(() -> {
+                try {
+                    nonSafeSequence.addValue();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
             thread.start();
         }
-        Assert.assertEquals(10, uncf.getCount());
+
+        Assert.assertEquals(10, nonSafeSequence.getValue());
     }
+
 
     @Test
     public void testSafeSequence() throws InterruptedException {
