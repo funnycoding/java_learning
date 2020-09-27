@@ -1,7 +1,7 @@
 package chapger1;
 
 import chapter1.SafeSequence;
-import chapter2.UnsafeCountingFactorizer;
+import chapter2.UnSafeCountingFactorizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.Assert;
@@ -18,7 +18,7 @@ import org.mockito.Mockito;
 public class UnsafeCountingFactorizerTest extends Mockito {
     @Test
     public void unsafeCounterTest() throws InterruptedException {
-        UnsafeCountingFactorizer uncf = new UnsafeCountingFactorizer();
+        UnSafeCountingFactorizer uncf = new UnSafeCountingFactorizer();
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
 

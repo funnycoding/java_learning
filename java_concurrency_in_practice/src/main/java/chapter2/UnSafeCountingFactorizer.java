@@ -10,10 +10,10 @@ import javax.servlet.ServletResponse;
  * @author XuYanXin
  * @program java_learning
  * @description 存在线程安全问题的 Servlet ，service 中的 ++count 是非原子操作，在多线程环境下会出现竞态条件问题
- * @date 2020/9/25 5:50 下午
+ * @date 2020/9/28 1:53 上午
  */
 
-public class UnsafeCountingFactorizer extends GenericServlet implements Servlet {
+public class UnSafeCountingFactorizer extends GenericServlet implements Servlet {
     // 可变变量 计数器，在多线程环境下存在 安全问题
     private long count = 0;
 

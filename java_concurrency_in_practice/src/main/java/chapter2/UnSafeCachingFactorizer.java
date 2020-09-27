@@ -36,6 +36,8 @@ public class UnSafeCachingFactorizer extends GenericServlet implements Servlet {
         }
     }
 
+
+
     // ------ 下面是模拟的业务方法，没有实际意义 ------
     void encodeIntoResponse(ServletResponse resp, BigInteger[] factors) {
     }
