@@ -1,7 +1,7 @@
 package chapger1;
 
 import chapter1.SafeSequence;
-import chapter1.UnsafeCountingFactorizer;
+import chapter2.UnsafeCountingFactorizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.Assert;
